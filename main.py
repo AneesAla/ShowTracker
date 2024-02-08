@@ -65,21 +65,23 @@ class TVShowDatabase:
     def close_connection(self):
         self.conn.close()
 
-
 if __name__ == "__main__":
     db = TVShowDatabase('tv_shows.db')
     while True:
-        command = int(input("Enter 1 for add, 2 view, 3 for update, 4 for delete, 0 for exit: "))
-        if command == 1:
-            db.add_show()
-        elif command == 2:
-            db.view_shows()
-        elif command == 3:
-            db.update_show()
-        elif command == 4:
-            db.delete_show()
-        elif command == 0:
-            db.close_connection()
-            break
-        else:
-            print("Invalid input. Please try again.")
+        try:
+            command = int(input("Enter 1 for add, 2 view, 3 for update, 4 for delete, 0 for exit: "))
+            if command == 1:
+                db.add_show()
+            elif command == 2:
+                db.view_shows()
+            elif command == 3:
+                db.update_show()
+            elif command == 4:
+                db.delete_show()
+            elif command == 0:
+                db.close_connection()
+                break
+            else:
+                print("Invalid input. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
